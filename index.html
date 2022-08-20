@@ -3,19 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta charset="utf-8">
-    <link href="style.css?v=2" rel="stylesheet">
-    <script src="script.js?v=2" defer></script>
+    <link href="style.css?v=3" rel="stylesheet">
+    <script src="script.js?v=3" defer></script>
 </head>
 
 <body>
-    <script>
-        //if (navigator.userAgent.indexOf("Instagram") != -1) 
-        document.addEventListener("load", function () {
-            window.alert("aaa")
-            document.write("aaa");
-            document.write("<div class=\"warning\" target=\"_blank\" href=\"https://cu-bus.000webhostapp.com/cusis/\">請點擊右上角，選擇在瀏覽器開啟！</div>");
-        });
-    </script>
     <div class="center">
         <div class="content">
             <h1>獲取CUSIS時間表</h1>
@@ -49,7 +41,7 @@
         <script>
             if (navigator.userAgent.toLowerCase().indexOf("instagram") != -1)
                 document.write("<div class=\"warning\" target=\"_blank\" href=\"https://cu-bus.000webhostapp.com/cusis/\"><p>IG唔知點解Add唔到Calendar<br>請點擊右上角，選擇在瀏覽器開啟！</p></div>");
-            if (!window.location.href.includes('cusis'))
+            else if (!window.location.href.includes('cusis'))
                 window.location.replace("https://cu-bus.000webhostapp.com/cusis/");
         </script>
 </body>
