@@ -9,4 +9,5 @@
 ## API
 * 若使用Get Method連接至../cusis/api.php，會得到所有本學期課程之JSON檔。
 * 若使用Post Method，則會得到ICAL行事曆檔案。
-* Prams: https://cu-bus.000webhostapp.com/cusis/api.php?SID=1155000000&pwd=Passwordhere
+* Prams: https://cu-bus.000webhostapp.com/cusis/api.php?SID=1155000000&pwd=Passwordhere&_token=123456787654321
+* 請先連接至https://cu-bus.000webhostapp.com/cusis/index.php 以取得token
