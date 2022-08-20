@@ -13,23 +13,24 @@
             <h1>獲取CUSIS時間表</h1>
             <p style="font-size: 0.4rem; margin-bottom: 5px;">ITSC見到可以Dup呢個web去server～😥<br>個Timetable
                 APP有小小難用所以先寫個Web</p>
-            <div class="Notes" style="margin: 10px 10% 20px 10%"
-                onclick="window.location.href = 'https://github.com/AnsonCheng03/CUHK_Timetable_fetch'"">
-                本網站並<b>不會</b>儲存任何資料。<br>按此查看Source Code~
-            </div>
-            <form action=" api.php" method="POST">
+            <form style="margin-top: 20px" action=" api.php" method="POST">
                 <input placeholder="SID" name="SID" onkeypress="return isNumberKey(event)" type="number"
                     min="1000000000" max="1500000000" required></input><br>
                 <input placeholder="密碼" name="pwd" type="password" required></input><br>
                 <button type="submit" name="requestmode">下載時間表</button>
                 </form>
-                <div class="Notes" onclick="window.location.href = '/'">
-                    [網站推薦] 唔識搭校巴？撳呢度查路線！
+                <div class="Notes" style="margin: 10px 10% 0 10%"
+                    onclick="window.location.href = 'https://github.com/AnsonCheng03/CUHK_Timetable_fetch'"">
+                    本網站並<b>不會</b>儲存任何資料。<br>按此查看Source Code~
                 </div>
                 <script>
                     if(!/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) 
                         document.write("<div class=\"Notes\" style=\"margin-top:10px\" onclick=\"window.location.href = 'https://support.google.com/calendar/answer/37118?hl=zh-Hant&co=GENIE.Platform%3DDesktop'\">Android／電腦Add落Google Calendar方法</div>");
                 </script>
+                <div class="Notes" style="margin: 10px 10%" onclick="window.location.href = '/'">
+                    [網站推薦] 唔識搭校巴？撳呢度查路線！
+                </div>
+
                 <svg onclick="window.location.href = 'https://github.com/AnsonCheng03/CUHK_Timetable_fetch'"
                     xmlns="http://www.w3.org/2000/svg" width="5%" style="margin-top: 20px; cursor: pointer;"
                     viewBox="0 0 24 24">
