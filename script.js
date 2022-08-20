@@ -16,12 +16,14 @@ function submitform(form, replacecontent, target = "/") {
 }
 
 function isNumberKey(evt) {
-    var charCode = (evt.which) ? evt.which : event.keyCode;
+    const charCode = (evt.which) ? evt.which : event.keyCode;
     if ((charCode < 48 || charCode > 57))
         return false;
 
     return true;
 }
 
+
 if (!window.location.href.includes('cusis'))
     window.location.replace("https://cu-bus.000webhostapp.com/cusis/");
+

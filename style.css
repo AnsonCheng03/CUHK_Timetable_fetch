@@ -1,7 +1,8 @@
-html, body {
+html,
+body {
     min-width: 360px;
     min-height: 680px;
-    margin: 0; 
+    margin: 0;
     padding: 0;
     text-align: center;
     height: 100%;
@@ -34,7 +35,8 @@ h1 {
     box-shadow: 0px 15px 15px 0.15px rgba(0, 0, 0, 0.05);
 }
 
-input, button {
+input,
+button {
     font-size: 14px;
 }
 
@@ -72,16 +74,16 @@ input:focus::placeholder {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 button {
-    
+
     align-items: center;
 
     background-color: #4285F4;
@@ -106,4 +108,21 @@ button {
     padding: 2vh;
     border-radius: 20px;
     cursor: pointer;
+}
+
+.warning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    background-color: #fff;
+}
+
+.warning * {
+    width: 100vw;
 }
