@@ -35,10 +35,10 @@
         header('Content-Disposition: attachment; filename=cuhktimetable.ics');
         $currentdatetime = (new DateTime(''))->format("Ymd\THis\Z");
 
-        echo "BEGIN:VCALENDAR\nCALSCALE:GREGORIAN\nVERSION:2.0\nX-WR-TIMEZONE:Asia/Hong_Kong\nTZID:Asia/Hong_Kong\nX-LIC-LOCATION:Asia/Hong_Kong\nX-APPLE-CALENDAR-COLOR:#FF2968\nX-WR-CALNAME:CUHK Timetable\n";
+        echo "BEGIN:VCALENDAR\nCALSCALE:GREGORIAN\nVERSION:2.0\nX-WR-TIMEZONE:Asia/Hong_Kong\nTZID:Asia/Hong_Kong\nX-LIC-LOCATION:Asia/Hong_Kong\nX-APPLE-CALENDAR-COLOR:#FF2968\nX-WR-CALNAME:CUHK Timetable\nBEGIN:VTIMEZONE\nTZID:Asia/Hong_Kong\nEND:VTIMEZONE\n";
         foreach($responddata as $index => $value) {
             try {
-                echo "BEGIN:VEVENT\nCREATED:". $currentdatetime."\nDESCRIPTION:Instructors: ".$value["INSTRUCTORS"]."\\nCourse: ".$value["DESCR"]."\nDTEND;TZID=\"Asia/Hong_Kong\":".(new DateTime($value["START_DT"].' '.$value["MEETING_TIME_END"].':00'))->format("Ymd\THis")."\nDTSTAMP:".$currentdatetime."\nDTSTART;TZID=\"Asia/Hong_Kong\":".(new DateTime($value["START_DT"].' '.$value["MEETING_TIME_START"].':00'))->format("Ymd\THis")."\nLAST-MODIFIED:".$currentdatetime."\nLOCATION:".$value["FDESCR"]."\nGEO:".round(trim($value["LAT"]),6).";".round(trim($value["LNG"]),6)."\nSEQUENCE:0\nSUMMARY:"."[".$value["COMDESC"]."] ".$value["SUBJECT"].$value["CATALOG_NBR"]."-".$value["CLASS_SECTION"]."\nTRANSP:OPAQUE\nRRULE:FREQ=WEEKLY;UNTIL=".$value["END_DT"]."T235959Z\nUID:".uniqid()."\nEND:VEVENT\n";
+                echo "BEGIN:VEVENT\nCREATED:". $currentdatetime."\nDESCRIPTION:Instructors: ".$value["INSTRUCTORS"]."\\nCourse: ".$value["DESCR"]."\nDTEND;TZID=Asia/Hong_Kong:".(new DateTime($value["START_DT"].' '.$value["MEETING_TIME_END"].':00'))->format("Ymd\THis")."\nDTSTAMP:".$currentdatetime."\nDTSTART;TZID=Asia/Hong_Kong:".(new DateTime($value["START_DT"].' '.$value["MEETING_TIME_START"].':00'))->format("Ymd\THis")."\nLAST-MODIFIED:".$currentdatetime."\nLOCATION:".$value["FDESCR"]."\nGEO:".round(trim($value["LAT"]),6).";".round(trim($value["LNG"]),6)."\nSEQUENCE:0\nSUMMARY:"."[".$value["COMDESC"]."] ".$value["SUBJECT"].$value["CATALOG_NBR"]."-".$value["CLASS_SECTION"]."\nTRANSP:OPAQUE\nRRULE:FREQ=WEEKLY;UNTIL=".$value["END_DT"]."T235959Z\nUID:".uniqid()."\nEND:VEVENT\n";
             } catch (Exception $e) {
 
             }
