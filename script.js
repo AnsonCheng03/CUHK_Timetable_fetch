@@ -22,8 +22,3 @@ function isNumberKey(evt) {
 
     return true;
 }
-
-
-if (!window.location.href.includes('cusis'))
-    window.location.replace("https://cu-bus.000webhostapp.com/cusis/");
-
