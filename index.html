@@ -3,8 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta charset="utf-8">
-    <link href="style.css?v=4" rel="stylesheet">
-    <script src="script.js?v=4" defer></script>
+    <link href="style.css?v=5" rel="stylesheet">
+    <script src="script.js?v=5" defer></script>
 </head>
 
 <body>
@@ -13,13 +13,15 @@
             <h1>獲取CUSIS時間表</h1>
             <p style="font-size: 0.4rem; margin-bottom: 5px;">ITSC見到可以Dup呢個web去server～😥<br>個Timetable
                 APP有小小難用所以先寫個Web</p>
-            <form style="margin-top: 20px" action=" api.php" method="POST">
-                <input placeholder="SID" name="SID" onkeypress="return isNumberKey(event)" type="number"
-                    min="1000000000" max="1500000000" required></input><br>
+            <form onsubmit="return submitform(this)" style="margin-top: 20px" action=" api.php" method="POST">
+                <input placeholder="SID" name="SID" onkeypress="return isNumberKey(event)" type="number" min="1000000000" max="1500000000" required></input><br>
                 <input placeholder="密碼" name="pwd" type="password" required></input><br>
                 <button type="submit" name="requestmode">下載時間表</button>
-                </form>
-                <div class="Notes" style="margin: 10px 10% 0 10%"
+            </form>
+            <div class="DownloadNotes">
+                已下載行事曆
+            </div>
+                <div class="Notes" downloadhide style="margin: 10px 10% 0 10%"
                     onclick="window.location.href = 'https://github.com/AnsonCheng03/CUHK_Timetable_fetch'"">
                     本網站並<b>不會</b>儲存任何資料。<br>按此查看Source Code~
                 </div>

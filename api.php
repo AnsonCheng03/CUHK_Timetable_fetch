@@ -1,10 +1,4 @@
 <?php
-    function encrypt($plaintext) {
-        $password = "e3ded030ce294235047550b8f69f5a28";
-        $iv = "e0b2ea987a832e24";
-        return base64_encode(openssl_encrypt($plaintext, "AES-256-CBC", $password, OPENSSL_RAW_DATA, $iv));
-    }
-
     function curldata($url, $xmlRequest) {
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -22,13 +16,13 @@
     }
 
     if(!$_REQUEST['SID'] || !$_REQUEST['pwd']) 
-        die("請輸入SID及密碼<script>setTimeout(() => {history.back()},3000)</script>");
+        die("<body style=\"margin:0;padding:0;display:flex;align-items: center;justify-content: center;font-size:2rem;\"><div>請輸入SID及密碼</div><script>setTimeout(() => {window.location.replace(\"index.html\");},2500)</script>");
 
-    $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetTimeTable xmlns=\"http://tempuri.org/\"><asP1>".encrypt($_REQUEST['SID'])."</asP1><asP2>".encrypt($_REQUEST['pwd'])."</asP2><asP3>hk.edu.cuhk.ClassTT</asP3></GetTimeTable></soap:Body></soap:Envelope>";
+    $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetTimeTable xmlns=\"http://tempuri.org/\"><asP1>".$_REQUEST['SID']."</asP1><asP2>".$_REQUEST['pwd']."</asP2><asP3>hk.edu.cuhk.ClassTT</asP3></GetTimeTable></soap:Body></soap:Envelope>";
     $responddata = json_decode(strip_tags(curldata("https://campusapps.itsc.cuhk.edu.hk/store/CLASSSCHD/STT.asmx",$xml)), true);
 
     if(!$responddata)
-        die("帳戶名稱或密碼錯誤<script>setTimeout(() => {history.back()},3000)</script>");
+        die("<body style=\"margin:0;padding:0;display:flex;align-items: center;justify-content: center;font-size:2rem;\"><div>帳戶名稱或密碼錯誤</div><script>setTimeout(() => {window.location.replace(\"index.html\");},2500)</script>");
 
     if($_SERVER['REQUEST_METHOD'] == "POST") {
         header('Content-Type: text/calendar; charset=utf-8');
