@@ -12,8 +12,8 @@
         <div class="content">
             <h1>獲取CUSIS時間表</h1>
             <form action="api.php" method="POST">
-                <input placeholder="SID" name="SID" type="number" min="1000000000" max="1500000000"></input><br>
-                <input placeholder="密碼" name="pwd" type="password"></input><br>
+                <input placeholder="SID" name="SID" onkeypress="return isNumberKey(event)" type="number" min="1000000000" max="1500000000" required></input><br>
+                <input placeholder="密碼" name="pwd" type="password" required></input><br>
                 <button type="submit" name="requestmode">下載時間表</button>
             </form>
             <div class="Notes" onclick="window.location.href = '/'">

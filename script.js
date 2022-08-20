@@ -15,15 +15,13 @@ function submitform(form, replacecontent, target = "/") {
     return false;
 }
 
-function resizecard() {
-    let size = window.innerWidth * 0.8 / 560;
-    if (size * 356 > document.querySelector('.card').clientHeight) size = document.querySelector('.card').clientHeight / 400
-    document.querySelector('.card').style.transform = "scale(" + size + ")"
+function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    if ((charCode < 48 || charCode > 57))
+        return false;
+
+    return true;
 }
 
-window.addEventListener('load', resizecard);
-if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
-    window.addEventListener('resize', resizecard);
-document.querySelector('.download').addEventListener('click', () => {
-    window.location.href = "savecard/?Type=" + document.querySelector('.card').getAttribute('Type') + "&Name=" + document.querySelector('.studatas .Name .value span').innerText + "&SID=" + document.querySelector('.studatas .SID .value span').innerText + "&Major=" + document.querySelector('.studatas .Major .value span').innerText + "&Valid=" + document.querySelector('.studatas .Valid .value span').innerText;
-});
+if (!window.location.href.includes('cusis'))
+    window.location.replace("https://cu-bus.000webhostapp.com/cusis/");

@@ -22,7 +22,7 @@
     }
 
     if(!$_REQUEST['SID'] || !$_REQUEST['pwd']) 
-        die("請輸入SID及密碼");
+        die("請輸入SID及密碼<script>setTimeout(() => {history.back()},3000)</script>");
 
     $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetTimeTable xmlns=\"http://tempuri.org/\"><asP1>".encrypt($_REQUEST['SID'])."</asP1><asP2>".encrypt($_REQUEST['pwd'])."</asP2><asP3>hk.edu.cuhk.ClassTT</asP3></GetTimeTable></soap:Body></soap:Envelope>";
     $responddata = json_decode(strip_tags(curldata("https://campusapps.itsc.cuhk.edu.hk/store/CLASSSCHD/STT.asmx",$xml)), true);
