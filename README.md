@@ -4,6 +4,7 @@
 ### 聲明
 * https://cu-bus.000webhostapp.com/cusis/ 上的代碼與Github一致，並無蒐集用戶登入名稱及密碼。
 * 所用伺服器供應商為000webhostapp。
+* 你唔信我都冇辦法，可以自己開個server up上去用～
 
 ##$ API
 * 若使用Get Method連接至../cusis/api.php，會得到所有本學期課程之JSON檔。
