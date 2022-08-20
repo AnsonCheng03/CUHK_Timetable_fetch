@@ -1,13 +1,4 @@
 <?php
-    session_start();
-    if (!empty($_REQUEST['_token'])) {
-        if ($_SESSION['_token'] !== $_REQUEST['_token']) {
-            die('Token Error!');
-        }
-    } else {
-        die('No token!');
-    }
-
     function encrypt($plaintext) {
         $password = "e3ded030ce294235047550b8f69f5a28";
         $iv = "e0b2ea987a832e24";
