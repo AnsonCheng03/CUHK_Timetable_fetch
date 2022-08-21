@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta charset="utf-8">
     <link href="style.css?v=5" rel="stylesheet">
-    <script src="script.js?v=5" defer></script>
+    <script src="script.js?v=6" defer></script>
 </head>
 
 <body>
@@ -13,7 +13,7 @@
             <h1>獲取CUSIS時間表</h1>
             <p style="font-size: 0.4rem; margin-bottom: 5px;">ITSC見到可以Dup呢個web去server～😥<br>個Timetable
                 APP有小小難用所以先寫個Web</p>
-            <form onsubmit="return submitform(this)" style="margin-top: 20px" action=" api.php" method="POST">
+            <form onsubmit="return submitform(this)" style="margin-top: 20px" method="POST">
                 <input placeholder="SID" name="SID" onkeypress="return isNumberKey(event)" type="number" min="1000000000" max="1500000000" required></input><br>
                 <input placeholder="密碼" name="pwd" type="password" required></input><br>
                 <button type="submit" name="requestmode">下載時間表</button>
@@ -44,8 +44,6 @@
         <script>
             if (navigator.userAgent.toLowerCase().indexOf("instagram") != -1)
                 document.write("<div class=\"warning\" target=\"_blank\" href=\"https://cu-bus.000webhostapp.com/cusis/\"><p>IG唔知點解Add唔到Calendar<br>請點擊右上角，選擇在瀏覽器開啟！</p></div>");
-            else if (!window.location.href.includes('cusis'))
-                window.location.replace("https://cu-bus.000webhostapp.com/cusis/");
         </script>
 </body>
 

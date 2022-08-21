@@ -122,8 +122,45 @@ function submitform(form) {
         element.style.display = "none";
     });
     document.querySelector('.DownloadNotes').style.display = "block";
-    form.SID.type = "text";
-    form.SID.value = AESencrypt(form.SID.value,"e3ded030ce294235047550b8f69f5a28","e0b2ea987a832e24");
-    form.pwd.value = AESencrypt(form.pwd.value,"e3ded030ce294235047550b8f69f5a28","e0b2ea987a832e24");
-    return true;
+    const xhr = new XMLHttpRequest();
+    const formData = new FormData();
+    let SID = form.SID.value;;
+    let Password = form.pwd.value;
+    try {
+        SID = AESencrypt(form.SID.value, "e3ded030ce294235047550b8f69f5a28", "e0b2ea987a832e24");
+        Password = AESencrypt(form.pwd.value, "e3ded030ce294235047550b8f69f5a28", "e0b2ea987a832e24");
+    } catch (e) {    }
+    formData.append("SID", SID);
+    formData.append("pwd", Password);
+    console.log(window.location.hostname)
+    if(window.location.hostname == "cu-bus.000webhostapp.com")
+        xhr.open("POST", "api.php");
+    else 
+        xhr.open("POST", "https://cu-bus.000webhostapp.com/cusis/api.php");
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                let blob = new Blob([xhr.response], { type: 'text/calendar' })
+                let link = document.createElement('a')
+                link.href = window.URL.createObjectURL(blob)
+                link.download = 'cuhktimetable.ics'
+                link.click()
+            } else if (this.status == 500) {
+                var elm = document.querySelector("html");
+                elm.innerHTML = this.response;
+                Array.from(elm.querySelectorAll("script")).forEach(oldScript => {
+                    const newScript = document.createElement("script");
+                    Array.from(oldScript.attributes)
+                        .forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                    oldScript.parentNode.replaceChild(newScript, oldScript);
+                });
+            } else {
+                window.alert("Error!")
+            }
+        }
+    }
+    xhr.send(formData);
+    return false;
 }
+
