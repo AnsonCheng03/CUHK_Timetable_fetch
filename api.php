@@ -1,7 +1,5 @@
 <?php
-    header('Access-Control-Allow-Origin: https://ansoncheng03.github.io');
-    header('Access-Control-Allow-Methods: GET, POST');
-    header("Access-Control-Allow-Headers: X-Requested-With");
+
 
     session_start();
     if(!$_SESSION['wrongpwcount']) 
@@ -12,7 +10,10 @@
             die("<body style=\"margin:0;padding:0;display:flex;align-items: center;justify-content: center;font-size:2rem;\"><div style='text-align:center;'>密碼錯誤次數過多。<br>連線已被封鎖，請稍後再試。</div>".($_SERVER['REQUEST_METHOD'] == "POST" ? "<script>setTimeout(() => {window.location.replace(\"index.html\");},5000)</script>" : ""));    
         }
 
-
+    header('Access-Control-Allow-Origin: https://ansoncheng03.github.io');
+    header("Access-Control-Allow-Credentials: true");
+    header('Access-Control-Allow-Methods: GET, POST');
+    header("Access-Control-Allow-Headers: X-Requested-With");
 
     function encrypt($plaintext) {
         $password = "e3ded030ce294235047550b8f69f5a28";
