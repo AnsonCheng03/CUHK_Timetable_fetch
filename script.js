@@ -160,6 +160,7 @@ function submitform(form) {
             }
         }
     }
+    xhr.withCredentials = true;
     xhr.send(formData);
     return false;
 }
