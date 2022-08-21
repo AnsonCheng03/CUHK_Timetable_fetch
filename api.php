@@ -77,5 +77,3 @@
         echo json_encode($responddata, JSON_PRETTY_PRINT);
     }
 ?>
-
-
