@@ -117,9 +117,7 @@ function isNumberKey(evt) {
 }
 
 function submitform(form) {
-
-    const webhostname = "cu-bus.epizy.com";
-
+    const webhostname = "cu-bus.online";
     form.style.display = "none";
     document.querySelectorAll('h1, p, .Notes[downloadhide]').forEach(element => {
         element.style.display = "none";
@@ -135,7 +133,6 @@ function submitform(form) {
     } catch (e) {    }
     formData.append("SID", SID);
     formData.append("pwd", Password);
-    console.log(window.location.hostname)
     if(window.location.hostname == webhostname)
         xhr.open("POST", "api.php");
     else 
