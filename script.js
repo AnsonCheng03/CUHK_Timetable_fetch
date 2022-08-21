@@ -117,7 +117,7 @@ function isNumberKey(evt) {
 }
 
 function submitform(form) {
-    const webhostname = "cu-bus-online.preview-domain.com";
+    const webhostname = "cu-bus.online";
     form.style.display = "none";
     document.querySelectorAll('h1, p, .Notes[downloadhide]').forEach(element => {
         element.style.display = "none";
