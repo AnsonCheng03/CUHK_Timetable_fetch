@@ -117,6 +117,9 @@ function isNumberKey(evt) {
 }
 
 function submitform(form) {
+
+    const webhostname = "cu-bus.epizy.com";
+
     form.style.display = "none";
     document.querySelectorAll('h1, p, .Notes[downloadhide]').forEach(element => {
         element.style.display = "none";
@@ -133,10 +136,10 @@ function submitform(form) {
     formData.append("SID", SID);
     formData.append("pwd", Password);
     console.log(window.location.hostname)
-    if(window.location.hostname == "cu-bus.epizy.com")
+    if(window.location.hostname == webhostname)
         xhr.open("POST", "api.php");
     else 
-        xhr.open("POST", "https://cu-bus.epizy.com/cusis/api.php");
+        xhr.open("POST", "https://"+webhostname+"/cusis/api.php");
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             if (this.status == 200) {
