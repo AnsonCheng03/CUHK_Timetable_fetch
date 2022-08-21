@@ -1,7 +1,18 @@
 <?php
-    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Origin: https://ansoncheng03.github.io');
     header('Access-Control-Allow-Methods: GET, POST');
     header("Access-Control-Allow-Headers: X-Requested-With");
+
+    session_start();
+    if(!$_SESSION['wrongpwcount']) 
+        $_SESSION['wrongpwcount'] = 0;
+    else 
+        if($_SESSION['wrongpwcount'] > 5) {
+            http_response_code(500);
+            die("<body style=\"margin:0;padding:0;display:flex;align-items: center;justify-content: center;font-size:2rem;\"><div style='text-align:center;'>密碼錯誤次數過多。<br>連線已被封鎖，請稍後再試。</div>".($_SERVER['REQUEST_METHOD'] == "POST" ? "<script>setTimeout(() => {window.location.replace(\"index.html\");},5000)</script>" : ""));    
+        }
+
+
 
     function encrypt($plaintext) {
         $password = "e3ded030ce294235047550b8f69f5a28";
@@ -15,8 +26,8 @@
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $headers = [
-        "Content-Type: text/xml; charset=utf-8",
-        "User-Agent: ClassTT/2.4 CFNetwork/1333.0.4 Darwin/21.5.0"
+            "Content-Type: text/xml; charset=utf-8",
+            "User-Agent: ClassTT/2.4 CFNetwork/1333.0.4 Darwin/21.5.0"
         ];
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $xmlRequest);
@@ -38,7 +49,13 @@
         $responddata = json_decode(strip_tags(curldata("https://campusapps.itsc.cuhk.edu.hk/store/CLASSSCHD/STT.asmx",$xml)), true);
         if(!$responddata) {
             http_response_code(500);
-            die("<body style=\"margin:0;padding:0;display:flex;align-items: center;justify-content: center;font-size:2rem;\"><div>帳戶名稱或密碼錯誤</div>".($_SERVER['REQUEST_METHOD'] == "POST" ? "<script>setTimeout(() => {window.location.replace(\"index.html\");},2500)</script>" : ""));    
+            $_SESSION['wrongpwcount']++;
+            if($_SESSION['wrongpwcount'] > 5) {
+                http_response_code(500);
+                die("<body style=\"margin:0;padding:0;display:flex;align-items: center;justify-content: center;font-size:2rem;\"><div style='text-align:center;'>密碼錯誤次數過多。<br>連線已被封鎖，請稍後再試。</div>".($_SERVER['REQUEST_METHOD'] == "POST" ? "<script>setTimeout(() => {window.location.replace(\"index.html\");},5000)</script>" : ""));    
+            } else {
+                die("<body style=\"margin:0;padding:0;display:flex;align-items: center;justify-content: center;font-size:2rem;\"><div>帳戶名稱或密碼錯誤</div>".($_SERVER['REQUEST_METHOD'] == "POST" ? "<script>setTimeout(() => {window.location.replace(\"index.html\");},2500)</script>" : ""));    
+            }
         }
     }
 
