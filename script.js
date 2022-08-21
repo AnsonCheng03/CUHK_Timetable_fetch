@@ -133,10 +133,10 @@ function submitform(form) {
     formData.append("SID", SID);
     formData.append("pwd", Password);
     console.log(window.location.hostname)
-    if(window.location.hostname == "cu-bus.000webhostapp.com")
+    if(window.location.hostname == "cu-bus.epizy.com")
         xhr.open("POST", "api.php");
     else 
-        xhr.open("POST", "https://cu-bus.000webhostapp.com/cusis/api.php");
+        xhr.open("POST", "https://cu-bus.epizy.com/cusis/api.php");
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             if (this.status == 200) {
@@ -156,7 +156,7 @@ function submitform(form) {
                     oldScript.parentNode.replaceChild(newScript, oldScript);
                 });
             } else {
-                window.alert("Error!")
+                window.alert("可能俾人ban左網站，過一陣返嚟望下～")
             }
         }
     }
