@@ -42,8 +42,10 @@
             </div>
         </div>
         <script>
-            if (navigator.userAgent.toLowerCase().indexOf("instagram") != -1)
-                document.write("<div class=\"warning\"><a target=\"_blank\" href=\"https://cu-bus.online/\">IG唔知點解Add唔到Calendar<br>請點擊右上角，選擇在瀏覽器開啟！</a></div>");
+            if (navigator.userAgent.toLowerCase().indexOf("instagram") != -1) {
+                document.write("<div class=\"warning\"><a id=\"openininstagram\" style=\"text-decoration: none; color: #000;\" target=\"_blank\" href=\"https://cu-bus.online/\" download>IG唔知點解Add唔到Calendar<br>請點擊右上角，選擇在瀏覽器開啟！</a></div>");
+                document.querySelector('#openininstagram').click();
+            }
         </script>
 </body>
 </html>
