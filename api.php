@@ -35,7 +35,7 @@
         $resp = curl_exec($curl);
         curl_close($curl);
         return $resp;
-    }
+    } 
 
     if(!$_REQUEST['SID'] || !$_REQUEST['pwd']) {
         http_response_code(500);
@@ -60,6 +60,7 @@
         }
     }
 
+    $_SESSION['wrongpwcount'] = 0;
     if($_SERVER['REQUEST_METHOD'] == "POST") {
         header('Content-Type: text/calendar; charset=utf-8');
         header('Content-Disposition: attachment; filename=cuhktimetable.ics');
@@ -77,4 +78,3 @@
     } else {
         echo json_encode($responddata, JSON_PRETTY_PRINT);
     }
-?>
