@@ -156,8 +156,12 @@ function submitform(form) {
                     oldScript.parentNode.replaceChild(newScript, oldScript);
                 });
             } else {
-                window.alert("可能俾人ban左網站，過一陣返嚟望下～")
-                window.location.href = "https://"+webhostname+"/cusis"
+                if(window.location.hostname == webhostname) {
+                    window.alert("可能俾人ban左網站，過一陣返嚟望下～");
+                } else {
+                    window.alert("Sorry 有啲問題，過五秒重新試下～");
+                    window.location.href = "https://"+webhostname+"/cusis";
+                }
             }
         }
     }
