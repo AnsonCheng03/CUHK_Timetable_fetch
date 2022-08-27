@@ -157,6 +157,7 @@ function submitform(form) {
                 });
             } else {
                 window.alert("可能俾人ban左網站，過一陣返嚟望下～")
+                window.location.href = "https://"+webhostname+"/cusis"
             }
         }
     }
