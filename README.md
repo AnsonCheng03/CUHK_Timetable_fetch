@@ -1,5 +1,7 @@
 # CUHK_Timetable_fetch
 可取得CUSIS之時間表，並儲存到手機行事曆上～
+* https://ansoncheng03.github.io/CUHK_Timetable_fetch/
+* https://cu-bus.online/cusis/
 
 ### 聲明
 * 伺服器上的代碼與Github一致，並無蒐集用戶登入名稱及密碼。
