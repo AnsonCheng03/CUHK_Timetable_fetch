@@ -130,13 +130,13 @@ function submitform(form) {
     try {
         SID = AESencrypt(form.SID.value, "e3ded030ce294235047550b8f69f5a28", "e0b2ea987a832e24");
         Password = AESencrypt(form.pwd.value, "e3ded030ce294235047550b8f69f5a28", "e0b2ea987a832e24");
-    } catch (e) {    }
+    } catch (e) { }
     formData.append("SID", SID);
     formData.append("pwd", Password);
-    if(window.location.hostname == webhostname)
+    if (window.location.hostname == webhostname)
         xhr.open("POST", "api.php");
-    else 
-        xhr.open("POST", "https://"+webhostname+"/cusis/api.php");
+    else
+        xhr.open("POST", "https://" + webhostname + "/cusis/api.php");
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             if (this.status == 200) {
@@ -145,7 +145,7 @@ function submitform(form) {
                 link.href = window.URL.createObjectURL(blob)
                 link.download = 'cuhktimetable.ics'
                 link.click()
-            } else if (this.status == 500) {
+            } else if (this.status == 201) {
                 var elm = document.querySelector("html");
                 elm.innerHTML = this.response;
                 Array.from(elm.querySelectorAll("script")).forEach(oldScript => {
@@ -156,11 +156,11 @@ function submitform(form) {
                     oldScript.parentNode.replaceChild(newScript, oldScript);
                 });
             } else {
-                if(window.location.hostname == webhostname) {
+                if (window.location.hostname == webhostname) {
                     window.alert("可能俾人ban左網站，過一陣返嚟望下～");
                 } else {
                     window.alert("Sorry 有啲問題，過五秒重新試下～");
-                    window.location.href = "https://"+webhostname+"/cusis";
+                    window.location.href = "https://" + webhostname + "/cusis";
                 }
             }
         }
